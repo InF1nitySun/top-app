@@ -9,10 +9,8 @@ import {ProductModel} from "../../interfaces/product.interface";
 import {firstLevelMenu} from "../../helpers/helpers";
 import {TopPageComponent} from "../../page-components";
 import {API} from "../../helpers/api";
-import Head from "next/head";
 import {Error404} from "../404";
-
-// import Head from "next/document";
+import Head from "next/head";
 
 function TopPage({firstCategory, page, products}: TopPageProps): JSX.Element {
 
@@ -20,17 +18,20 @@ function TopPage({firstCategory, page, products}: TopPageProps): JSX.Element {
         return <Error404/>;
     }
 
-    return <>
-        <Head>
-            <title>{page.metaTitle}</title>
-            <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
-            <meta name="description" content={page.metaDescription}/>
-            <meta property="og:title" content={page.metaTitle}/>
-            <meta property="og:description" content={page.metaDescription}/>
-            <meta property="og:type" content="article"/>
-        </Head>
-        <TopPageComponent firstCategory={firstCategory} page={page} products={products}/>
-    </>;
+    const {metaTitle, metaDescription} = page;
+
+    return (
+        <>
+            <Head>
+                <title>{metaTitle}</title>
+                <meta name="description" content={metaDescription}/>
+                <meta property="og:title" content={metaTitle}/>
+                <meta property="og:description" content={metaDescription}/>
+                <meta property="og:type" content="article"/>
+            </Head>
+            <TopPageComponent firstCategory={firstCategory} page={page} products={products}/>
+        </>
+    )
 }
 
 export default withLayout(TopPage);

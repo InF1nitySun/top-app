@@ -9,7 +9,12 @@ export default class MyDocument extends Document {
     render(): JSX.Element {
         return (
             <Html lang="ru">
-                <Head/>
+                <Head>
+
+
+                    <link rel="stylesheet"
+                          href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;700&display=swap"/>
+                </Head>
                 <body>
                     <Main/>
                     <NextScript/>
