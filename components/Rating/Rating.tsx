@@ -4,7 +4,6 @@ import {RatingProps} from "./Rating.props";
 import styles from "./Rating.module.css";
 import StarIcon from "./star.svg";
 
-
 export const Rating = forwardRef(({
                                       isEditable = false,
                                       error,
