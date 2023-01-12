@@ -75,6 +75,9 @@ export const Menu = (): JSX.Element => {
         return (
             <ul className={styles.secondBlock}>
                 {menu.map(m => {
+                    if (m.pages.length > 5)
+                        m.pages.length = 5
+
                     if (m.pages.map(p => p.alias).includes(router.asPath.split('/')[2])) {
                         m.isOpened = true
                     }

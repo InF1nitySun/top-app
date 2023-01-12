@@ -31,7 +31,7 @@ function TopPage({firstCategory, page, products}: TopPageProps): JSX.Element {
             </Head>
             <TopPageComponent firstCategory={firstCategory} page={page} products={products}/>
         </>
-    )
+    );
 }
 
 export default withLayout(TopPage);
@@ -59,12 +59,14 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async ({params}: Get
         return {notFound: true};
 
     const firstCategoryItem = firstLevelMenu.find(m => m.route === params.type);
+
     if (!firstCategoryItem) {
         return {notFound: true};
     }
     try {
         const {data: menu} = await axios.post<MenuItem[]>(API.topPage.find, {
-            firstCategory: firstCategoryItem.id
+            firstCategory: firstCategoryItem.id,
+            limit: 5
         });
 
         if (menu.length === 0)
@@ -74,7 +76,7 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async ({params}: Get
 
         const {data: products} = await axios.post<ProductModel[]>(API.product.find, {
             category: page.category,
-            limit: 10
+            limit: 5
         });
 
         return {

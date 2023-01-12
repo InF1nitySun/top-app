@@ -10,7 +10,7 @@ export default class MyDocument extends Document {
         return (
             <Html lang="ru">
                 <Head>
-
+                <title>MyDocument - title</title>
 
                     <link rel="stylesheet"
                           href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;700&display=swap"/>
